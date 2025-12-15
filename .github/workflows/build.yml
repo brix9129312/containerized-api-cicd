@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:   # 1️⃣ Add manual trigger
+  workflow_dispatch:   # 1️⃣ Manual trigger
 
 jobs:
   build_and_push:
@@ -17,8 +17,8 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.EMPTYBIN }}
-          password: ${{ secrets.EMPTYBIN }}
+          username: ${{ secrets.DOCKER_USERNAME }}   # ✅ Use your secret for username
+          password: ${{ secrets.DOCKER_PASSWORD }}   # ✅ Use your secret for token
 
       # 3️⃣ Setup Buildx (Docker)
       - name: Set up Docker Buildx
